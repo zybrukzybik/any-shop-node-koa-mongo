@@ -19,7 +19,6 @@ const me = require('./controllers/me')
 const { oauth, oauth_callback } = require('./controllers/oauth')
 const { checkout, getOrdersList } = require('./controllers/orders')
 const fs = require('fs')
-const socket = require('./socket')
 const app = new Koa()
 const messageList = require('./controllers/messageList')
 
@@ -108,8 +107,5 @@ app.use(ctx => {
     }
 })
 
-const server = app.listen(process.env.PORT, () => {
-    console.log('App running on http://localhost:3000')
-})
+module.exports = app
 
-socket(server)
